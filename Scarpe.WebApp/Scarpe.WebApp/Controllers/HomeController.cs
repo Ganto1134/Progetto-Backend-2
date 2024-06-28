@@ -11,11 +11,13 @@ namespace Scarpe.WebApp.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IArticleService _articleService;
+        private readonly ICommentService _commentService;
 
-        public HomeController(ILogger<HomeController> logger, IArticleService articleService)
+        public HomeController(ILogger<HomeController> logger, IArticleService articleService, ICommentService commentService)
         {
             _logger = logger;
             _articleService = articleService;
+            _commentService = commentService;
         }
 
         public IActionResult Index()
@@ -28,19 +30,29 @@ namespace Scarpe.WebApp.Controllers
         public IActionResult Write(){
             return View(new Article());
         }
+        [HttpPost]
         public IActionResult Write(Article article){
             _articleService.Create(article);
             return RedirectToAction(nameof(Index));
         }
         public IActionResult Read(int id){
             var article = _articleService.GetById(id);
+            var comments = _commentService.GetAll(id);
+            ViewBag.Comments = comments;
             return View(article);
         }
         public IActionResult Comment(int id){
             var article = _articleService.GetById(id);
             ViewBag.Article = article.Title;
-            TempData["IdArticolo"] = article.Id;
+            ViewBag.Id = article.Id;
             return View(new Comment());
+        }
+        [HttpPost]
+        public IActionResult Comment(int id, Comment comment){
+            var article = _articleService.GetById(id);
+            comment.Article = article;
+            _commentService.Create(comment);
+            return RedirectToAction(nameof(Read), new { id = id });
         }
         public IActionResult Privacy()
         {

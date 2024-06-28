@@ -2,7 +2,7 @@
 
 namespace Scarpe.WebApp.Services
 {
-    public interface ICommentService:ICrudService<Comment>
+    public interface ICommentService : ICrudService<Comment>
     {
         IEnumerable<Comment> GetAll(int articleId);
     }

@@ -47,3 +47,7 @@
     routeValues: new { id = Model.Id }, htmlAttributes: new {@class = "btn btn-sm btn-info"}) |
     <a asp-action="Index" asp-controller="Home" class="btn btn-sm btn-secondary">Back to List</a>
 </div>
+@foreach (Scarpe.WebApp.Entities.Comment comment in ViewBag.Comments)
+{
+    <div>@comment.Content</div>
+}
