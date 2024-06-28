@@ -1,5 +1,6 @@
 ﻿@using Scarpe.WebApp.Entities
 @model IEnumerable<Article>
+
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -16,7 +17,7 @@
         {
             <div class="col-md-4">
                 <div class="card mb-4">
-                    <img src="@product.Cover" class="card-img-top" alt="@product.Title">
+                    <img src="@Url.Content("~/" + product.CoverPath)" class="card-img-top" alt="@product.Title">
                     <div class="card-body">
                         <h5 class="card-title">@product.Title</h5>
                         <p class="card-text">@product.Price.ToString("C")</p>
@@ -29,5 +30,7 @@
 }
 else
 {
-    <div class="row"><div class="col text-center alert alert-warning">Non ci sono ancora articoli.</div></div>
+    <div class="row">
+        <div class="col text-center alert alert-warning">Non ci sono ancora articoli.</div>
+    </div>
 }

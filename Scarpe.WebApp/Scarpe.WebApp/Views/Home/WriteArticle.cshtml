@@ -1,16 +1,16 @@
-﻿@model Scarpe.WebApp.Entities.Article
+﻿@model Scarpe.WebApp.Models.ArticleInputModel
 
 @{
-    ViewData["Title"] = "Inserisvi TBA";
+    ViewData["Title"] = "Inserisci scarpa";
 }
 
-<h1>Inserisci una nScarpa che dovrà uscire</h1>
+<h1>Inserisci una nuova scarpa</h1>
 
 <h4>Scarpa</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Write">
+        <form asp-action="WriteArticle" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Title" class="control-label"></label>
@@ -27,6 +27,21 @@
                 <input asp-for="Price" class="form-control" />
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
+            <div class="form-group my-3">
+                <label asp-for="Cover" class="control-label"></label>
+                <input asp-for="Cover" class="form-control-file" type="file" />
+                <span asp-validation-for="Cover" class="text-danger"></span>
+            </div>
+            <div class="form-group my-3">
+                <label asp-for="Img1" class="control-label"></label>
+                <input asp-for="Img1" class="form-control-file" type="file" />
+                <span asp-validation-for="Img1" class="text-danger"></span>
+            </div>
+            <div class="form-group my-3">
+                <label asp-for="Img2" class="control-label"></label>
+                <input asp-for="Img2" class="form-control-file" type="file" />
+                <span asp-validation-for="Img2" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
                 <a asp-action="Index" class="btn btn-primary">Back to List</a>
@@ -34,7 +49,6 @@
         </form>
     </div>
 </div>
-
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

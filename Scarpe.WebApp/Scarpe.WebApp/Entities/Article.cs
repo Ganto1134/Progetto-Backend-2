@@ -5,8 +5,8 @@
         public string Title { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
-        public IFormFile Cover { get; set; }
-        public IFormFile Img1 { get; set; }
-        public IFormFile Img2 { get; set; }
+        public string CoverPath { get; set; }
+        public string Img1Path { get; set; }
+        public string Img2Path { get; set; }
     }
 }
