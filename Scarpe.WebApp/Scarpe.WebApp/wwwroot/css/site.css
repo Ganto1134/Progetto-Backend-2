@@ -18,5 +18,17 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background: linear-gradient(110deg, #452b81 0%, #ab66d0 25%, #8d4736 75%, #2a25c5 100%);
+}
+a:hover {
+    color: red;
+}
+
+.rossino:hover {
+    color:red; 
+}
+
+dd img {
+    width:500px;
 }
